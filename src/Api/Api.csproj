@@ -14,4 +14,11 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Module.Brands\Module.Brands.csproj" />
+    <ProjectReference Include="..\Module.Categories\Module.Categories.csproj" />
+    <ProjectReference Include="..\Module.Products\Module.Products.csproj" />
+    <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
