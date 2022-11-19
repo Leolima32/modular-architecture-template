@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Module.Categories.Core.Extensions;
+using Module.Categories.Infrastructure.Extensions;
 using Module.Products.Core.Extensions;
 using Module.Products.Infrastructure.Extensions;
 
@@ -12,6 +14,14 @@ namespace Module.Products
             services
                 .AddProductCore()
                 .AddProductInfrastructure(configuration);
+            return services;
+        }
+
+        public static IServiceCollection AddCategoryModule(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddCategoryCore()
+                .AddCategoryInfrastructure(configuration);
             return services;
         }
     }

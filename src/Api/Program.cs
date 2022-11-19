@@ -10,6 +10,7 @@ builder.Services.AddSharedInfrastructure(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddProductModule(builder.Configuration);
+builder.Services.AddCategoryModule(builder.Configuration);
 
 var app = builder.Build();
 

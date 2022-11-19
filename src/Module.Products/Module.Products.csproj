@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Module.Categories.Core\Module.Categories.Core.csproj" />
+    <ProjectReference Include="..\Module.Categories.Infrastructure\Module.Categories.Infrastructure.csproj" />
     <ProjectReference Include="..\Module.Products.Core\Module.Products.Core.csproj" />
     <ProjectReference Include="..\Module.Products.Infrastructure\Module.Products.Infrastructure.csproj" />
   </ItemGroup>
