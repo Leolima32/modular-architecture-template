@@ -1,3 +1,5 @@
+using Module.Brands;
+using Module.Categories;
 using Module.Products;
 using Shared.Infrastructure.Extensions;
 
@@ -11,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddProductModule(builder.Configuration);
 builder.Services.AddCategoryModule(builder.Configuration);
+builder.Services.AddBrandModule(builder.Configuration);
 
 var app = builder.Build();
 

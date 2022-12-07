@@ -16,13 +16,5 @@ namespace Module.Products
                 .AddProductInfrastructure(configuration);
             return services;
         }
-
-        public static IServiceCollection AddCategoryModule(this IServiceCollection services, IConfiguration configuration)
-        {
-            services
-                .AddCategoryCore()
-                .AddCategoryInfrastructure(configuration);
-            return services;
-        }
     }
 }
