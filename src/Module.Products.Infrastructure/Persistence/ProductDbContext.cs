@@ -7,7 +7,7 @@ namespace Module.Products.Infrastructure.Persistence
 {
     internal class ProductDbContext : ModuleDbContext, IProductDbContext
     {
-        public ProductDbContext(DbContextOptions options) : base(options)
+        public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options)
         {
         }
 

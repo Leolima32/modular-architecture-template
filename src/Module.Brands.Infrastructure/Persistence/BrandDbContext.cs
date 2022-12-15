@@ -7,7 +7,7 @@ namespace Module.Brands.Infrastructure.Persistence
 {
     internal class BrandDbContext : ModuleDbContext, IBrandDbContext
     {
-        public BrandDbContext(DbContextOptions options) : base(options)
+        public BrandDbContext(DbContextOptions<BrandDbContext> options) : base(options)
         {
         }
 

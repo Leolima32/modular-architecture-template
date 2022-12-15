@@ -7,7 +7,7 @@ namespace Module.Categories.Infrastructure.Persistence
 {
     internal class CategoryDbContext : ModuleDbContext, ICategoryDbContext
     {
-        public CategoryDbContext(DbContextOptions options) : base(options)
+        public CategoryDbContext(DbContextOptions<CategoryDbContext> options) : base(options)
         {
         }
 
