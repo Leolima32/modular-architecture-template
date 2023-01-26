@@ -11,17 +11,15 @@ namespace Module.Products.Core.Commands
 
     internal class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
     {
-        private readonly IProductDbContext _context;
-        public UpdateProductCommandHandler(IProductDbContext context)
+        private readonly IProductRepository _repo;
+        public UpdateProductCommandHandler(IProductRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _context.Products.Where(x => x.Id == request.Id).FirstOrDefault();
-            product.Name = request.Name;
-            return await _context.SaveChangesAsync(cancellationToken) > 0;
+            return await _repo.Update(request, cancellationToken);
         }
     }
 }

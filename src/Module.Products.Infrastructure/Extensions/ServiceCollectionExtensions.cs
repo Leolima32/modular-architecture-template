@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Module.Products.Core.Abstractions;
 using Module.Products.Infrastructure.Persistence;
+using Module.Products.Infrastructure.Repositories;
 using Shared.Infrastructure.Extensions;
 
 namespace Module.Products.Infrastructure.Extensions
@@ -12,7 +13,8 @@ namespace Module.Products.Infrastructure.Extensions
         {
             services
                 .AddDatabaseContext<ProductDbContext>(config)
-                .AddScoped<IProductDbContext>(provider => provider.GetService<ProductDbContext>());
+                .AddScoped<IProductDbContext>(provider => provider.GetService<ProductDbContext>())
+                .AddTransient<IProductRepository, ProductRepository>();
             return services;
         }
     }

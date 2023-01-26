@@ -17,15 +17,15 @@ namespace Module.Products.Core.Queries
 
     internal class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product>
     {
-        public IProductDbContext _context;
-        public GetProductByIdQueryHandler(IProductDbContext context)
+        private readonly IProductRepository _repo;
+        public GetProductByIdQueryHandler(IProductRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Products.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+            return await _repo.GetById(request, cancellationToken);
         }
     }
 }

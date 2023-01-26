@@ -10,16 +10,15 @@ namespace Module.Products.Core.Queries
     }
     internal class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
     {
-        private readonly IProductDbContext _context;
-        public GetAllProductsHandler(IProductDbContext context)
+        private readonly IProductRepository _repo;
+        public GetAllProductsHandler(IProductRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Products.OrderBy(x => x.Id).ToListAsync();
-            return products;
+            return await _repo.GetAll();
         }
     }
 }

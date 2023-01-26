@@ -10,5 +10,10 @@
     <ProjectReference Include="..\Module.Products.Core\Module.Products.Core.csproj" />
     <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Tests.Module.Products</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
