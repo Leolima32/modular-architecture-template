@@ -10,16 +10,15 @@ namespace Module.Brands.Core.Queries
     }
     internal class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IEnumerable<Brand>>
     {
-        private readonly IBrandDbContext _context;
-        public GetAllBrandsHandler(IBrandDbContext context)
+        private readonly IBrandRepository _repo;
+        public GetAllBrandsHandler(IBrandRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<IEnumerable<Brand>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Brands.OrderBy(x => x.Id).ToListAsync();
-            return products;
+            return await _repo.GetAll();
         }
     }
 }

@@ -11,17 +11,15 @@ namespace Module.Brands.Core.Commands
 
     internal class UpdateBrandCommandHandler : IRequestHandler<UpdateBrandCommand, bool>
     {
-        private readonly IBrandDbContext _context;
-        public UpdateBrandCommandHandler(IBrandDbContext context)
+        private readonly IBrandRepository _repo;
+        public UpdateBrandCommandHandler(IBrandRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<bool> Handle(UpdateBrandCommand request, CancellationToken cancellationToken)
         {
-            var product = _context.Brands.Where(x => x.Id == request.Id).FirstOrDefault();
-            product.Name = request.Name;
-            return await _context.SaveChangesAsync(cancellationToken) > 0;
+            return await _repo.Update(request, cancellationToken);
         }
     }
 }

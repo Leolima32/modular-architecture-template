@@ -17,15 +17,15 @@ namespace Module.Brands.Core.Queries
 
     internal class GetBrandByIdQueryHandler : IRequestHandler<GetBrandByIdQuery, Brand>
     {
-        public IBrandDbContext _context;
-        public GetBrandByIdQueryHandler(IBrandDbContext context)
+        private readonly IBrandRepository _repo;
+        public GetBrandByIdQueryHandler(IBrandRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<Brand> Handle(GetBrandByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Brands.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+            return await _repo.GetById(request, cancellationToken);
         }
     }
 }

@@ -11,18 +11,15 @@ namespace Module.Brands.Core.Commands
 
     internal class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, Guid>
     {
-        private readonly IBrandDbContext _context;
-        public CreateBrandCommandHandler(IBrandDbContext context)
+        private readonly IBrandRepository _repo;
+        public CreateBrandCommandHandler(IBrandRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<Guid> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
         {
-            var product = new Brand() { Name = request.Name };
-            await _context.Brands.AddAsync(product, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-            return product.Id;
+            return await _repo.Create(request, cancellationToken);
         }
     }
 }

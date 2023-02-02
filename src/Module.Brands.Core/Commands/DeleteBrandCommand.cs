@@ -10,22 +10,15 @@ namespace Module.Brands.Core.Commands
 
     internal class DeleteBrandCommandHandler: IRequestHandler<DeleteBrandCommand, bool>
     {
-        private readonly IBrandDbContext _context;
-        public DeleteBrandCommandHandler(IBrandDbContext context)
+        private readonly IBrandRepository _repo;
+        public DeleteBrandCommandHandler(IBrandRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<bool> Handle(DeleteBrandCommand request, CancellationToken cancellationToken)
         {
-            var product = _context.Brands.Where(x => x.Id == request.Id).FirstOrDefault();
-            if(product == null)
-            {
-                return false;
-            }
-            _context.Brands.Remove(product);
-            await _context.SaveChangesAsync(cancellationToken);
-            return true;
+            return await _repo.Delete(request, cancellationToken);
         }
     }
 }
