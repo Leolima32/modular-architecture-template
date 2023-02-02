@@ -11,18 +11,15 @@ namespace Module.Categories.Core.Commands
 
     internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Guid>
     {
-        private readonly ICategoryDbContext _context;
-        public CreateCategoryCommandHandler(ICategoryDbContext context)
+        private readonly ICategoryRepository _repo;
+        public CreateCategoryCommandHandler(ICategoryRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var product = new Category() { Name = request.Name };
-            await _context.Categories.AddAsync(product, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-            return product.Id;
+            return await _repo.Create(request, cancellationToken);
         }
     }
 }

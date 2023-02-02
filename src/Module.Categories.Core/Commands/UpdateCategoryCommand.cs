@@ -11,17 +11,15 @@ namespace Module.Categories.Core.Commands
 
     internal class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, bool>
     {
-        private readonly ICategoryDbContext _context;
-        public UpdateCategoryCommandHandler(ICategoryDbContext context)
+        private readonly ICategoryRepository _repo;
+        public UpdateCategoryCommandHandler(ICategoryRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<bool> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var product = _context.Categories.Where(x => x.Id == request.Id).FirstOrDefault();
-            product.Name = request.Name;
-            return await _context.SaveChangesAsync(cancellationToken) > 0;
+            return await _repo.Update(request, cancellationToken);
         }
     }
 }

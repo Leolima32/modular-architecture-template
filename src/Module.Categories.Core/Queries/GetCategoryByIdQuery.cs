@@ -17,15 +17,15 @@ namespace Module.Categories.Core.Queries
 
     internal class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, Category>
     {
-        public ICategoryDbContext _context;
-        public GetCategoryByIdQueryHandler(ICategoryDbContext context)
+        private readonly ICategoryRepository _repo;
+        public GetCategoryByIdQueryHandler(ICategoryRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<Category> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Categories.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+            return await _repo.GetById(request, cancellationToken);
         }
     }
 }

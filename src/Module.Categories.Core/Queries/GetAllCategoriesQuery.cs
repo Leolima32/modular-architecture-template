@@ -10,16 +10,15 @@ namespace Module.Categories.Core.Queries
     }
     internal class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<Category>>
     {
-        private readonly ICategoryDbContext _context;
-        public GetAllCategoriesHandler(ICategoryDbContext context)
+        private readonly ICategoryRepository _repo;
+        public GetAllCategoriesHandler(ICategoryRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<IEnumerable<Category>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Categories.OrderBy(x => x.Id).ToListAsync();
-            return products;
+            return await _repo.GetAll();
         }
     }
 }

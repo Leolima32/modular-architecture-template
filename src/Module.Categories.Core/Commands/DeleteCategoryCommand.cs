@@ -10,22 +10,15 @@ namespace Module.Categories.Core.Commands
 
     internal class DeleteCategoryCommandHandler: IRequestHandler<DeleteCategoryCommand, bool>
     {
-        private readonly ICategoryDbContext _context;
-        public DeleteCategoryCommandHandler(ICategoryDbContext context)
+        private readonly ICategoryRepository _repo;
+        public DeleteCategoryCommandHandler(ICategoryRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
-            var product = _context.Categories.Where(x => x.Id == request.Id).FirstOrDefault();
-            if(product == null)
-            {
-                return false;
-            }
-            _context.Categories.Remove(product);
-            await _context.SaveChangesAsync(cancellationToken);
-            return true;
+            return await _repo.Delete(request, cancellationToken);
         }
     }
 }
