@@ -1,7 +1,7 @@
 Modular Architecture API Example
 ================================
 
-This project provides an example implementation of a modular architecture for building a RESTful API using Node.js.
+This project provides an example implementation of a modular architecture for building a RESTful API using .NET 6.
 
 Getting Started
 ---------------
@@ -10,53 +10,35 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need to have Node.js and npm installed on your machine. You can download the latest version of Node.js from the official website ([https://nodejs.org/en/download/](https://nodejs.org/en/download/)).
+You will need to have .NET 6 and Microsoft SQL Server with a SQL Express instance installed on your machine. You can download the latest version of .NET from the official website ([https://dotnet.microsoft.com/en-us/download/dotnet](https://dotnet.microsoft.com/en-us/download/dotnet)).
 
 ### Installing
 
 1.  Clone the repository to your local machine:
 
-shellCopy code
-
-`$ git clone https://github.com/Leolima32/Modular_Architecture_API_Example.git`
+```shell
+$ git clone https://github.com/Leolima32/Modular_Architecture_API_Example.git
+```
 
 2.  Navigate to the project directory:
 
-shellCopy code
+```shell
+$ cd Modular_Architecture_API_Example\src\Api
+```
+3.  Start the development server:
 
-`$ cd Modular_Architecture_API_Example`
+```shell
+$ dotnet run
+```
 
-3.  Install the required dependencies:
-
-rubyCopy code
-
-`$ npm install`
-
-4.  Start the development server:
-
-rubyCopy code
-
-`$ npm start`
-
-The API will be running at `http://localhost:3000`.
+The API will be running at ` https://localhost:7075`.
 
 Modular Architecture
 --------------------
 
 This project follows a modular architecture, where each feature or component of the API is separated into its own module. This makes it easy to maintain, test, and scale the API as needed.
 
-Built With
-----------
-
-*   [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine.
-*   [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
-
-Contributing
-------------
-
-If you would like to contribute to this project, please fork the repository and create a pull request with your changes.
-
 License
 -------
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) file for details.
