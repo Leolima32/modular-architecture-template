@@ -11,4 +11,9 @@
     <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Tests.Module.Categories</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>

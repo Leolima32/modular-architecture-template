@@ -1,11 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Module.Products.Core.Abstractions;
 using Module.Products.Core.Commands;
 using Module.Products.Core.Entities;
 using Module.Products.Infrastructure.Persistence;
 using Module.Products.Infrastructure.Repositories;
-using Moq;
-using System.Linq;
 
 namespace Tests.Module.Products;
 
