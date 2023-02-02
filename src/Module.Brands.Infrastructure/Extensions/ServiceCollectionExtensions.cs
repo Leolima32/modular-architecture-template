@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Module.Brands.Core.Abstractions;
 using Module.Brands.Infrastructure.Persistence;
+using Module.Brands.Infrastructure.Repositories;
 using Shared.Infrastructure.Extensions;
 
 namespace Module.Brands.Infrastructure.Extensions
@@ -12,7 +14,11 @@ namespace Module.Brands.Infrastructure.Extensions
         {
             services
                 .AddDatabaseContext<BrandDbContext>(config)
-                .AddScoped<IBrandDbContext>(provider => provider.GetService<BrandDbContext>());
+                .AddScoped<IBrandDbContext>(provider => provider.GetService<BrandDbContext>())
+                .AddTransient<IBrandRepository, BrandRepository>();
+
+            var context = services.BuildServiceProvider().GetService<BrandDbContext>();
+            context.Database.Migrate();
             return services;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Module.Products.Core.Abstractions;
 using Module.Products.Infrastructure.Persistence;
@@ -15,6 +16,9 @@ namespace Module.Products.Infrastructure.Extensions
                 .AddDatabaseContext<ProductDbContext>(config)
                 .AddScoped<IProductDbContext>(provider => provider.GetService<ProductDbContext>())
                 .AddTransient<IProductRepository, ProductRepository>();
+                   
+            var context = services.BuildServiceProvider().GetService<ProductDbContext>();
+            context.Database.Migrate();
             return services;
         }
     }
