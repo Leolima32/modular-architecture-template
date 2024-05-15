@@ -1,4 +1,4 @@
-Modular Architecture API Example
+Modular Architecture Template
 ================================
 
 This project provides an example implementation of a modular architecture for building a RESTful API using .NET 6.
