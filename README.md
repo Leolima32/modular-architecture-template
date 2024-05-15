@@ -17,13 +17,13 @@ You will need to have .NET 6 and Microsoft SQL Server with a SQL Express instanc
 1.  Clone the repository to your local machine:
 
 ```shell
-$ git clone https://github.com/Leolima32/Modular_Architecture_API_Example.git
+$ git clone https://github.com/Leolima32/modular-architecture-template.git
 ```
 
 2.  Navigate to the project directory:
 
 ```shell
-$ cd Modular_Architecture_API_Example\src\Api
+$ cd modular-architecture-template\src\Api
 ```
 3.  Start the development server:
 
